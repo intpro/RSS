@@ -1,8 +1,8 @@
 {
     "name": "interpro/rss",
-    "description": "Storage logic for quick start",
+    "description": "RSS module for Quick storage",
     "keywords": [
-        "rss"
+        "rss, qstorage"
     ],
     "license": "MIT",
     "authors": [
