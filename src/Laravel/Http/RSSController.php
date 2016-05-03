@@ -3,7 +3,6 @@
 namespace Interpro\RSS\Laravel\Http;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Request;
 use Interpro\RSS\Concept\Command\FetchRSSCommand;
 
 class RSSController extends Controller
@@ -14,25 +13,15 @@ class RSSController extends Controller
 
     }
 
-    public function fetchRSS()
+    public function fetchRSS($link_name)
     {
-        if(Request::has('link_name'))
-        {
-            $dataobj = Request::all();
+        try {
+            $this->dispatch(new FetchRSSCommand($link_name));
 
-            try {
+            return ['status' => 'OK'];
 
-                $link_name = $dataobj['link_name'];
-
-                $this->dispatch(new FetchRSSCommand($link_name));
-
-                return ['status' => 'OK'];
-
-            }catch(\Exception $exception) {
-                return ['status' => ('Что-то пошло не так. '.$exception->getMessage())];
-            }
-        } else {
-            return ['status' => 'Не хватает параметров для сохранения.'];
+        }catch(\Exception $exception) {
+            return ['status' => ('Что-то пошло не так. '.$exception->getMessage())];
         }
     }
 

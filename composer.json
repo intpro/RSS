@@ -5,6 +5,9 @@
         "rss"
     ],
     "license": "MIT",
+    "require": {
+        "willvincent/feeds": "^1.0"
+    },
     "authors": [
         {
             "name": "Boris Dorofeev",
