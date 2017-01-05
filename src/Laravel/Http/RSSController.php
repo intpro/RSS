@@ -21,7 +21,7 @@ class RSSController extends Controller
             return ['status' => 'OK'];
 
         }catch(\Exception $exception) {
-            return ['status' => ('Что-то пошло не так. '.$exception->getMessage())];
+            return ['status' => ($exception->getMessage())];
         }
     }
 
